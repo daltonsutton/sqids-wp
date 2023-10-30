@@ -4,6 +4,7 @@ Tags: sqids, hashids
 Requires at least: 6.0
 Tested up to: 6.2
 Requires PHP: 8.1
+License: MIT
 
 Generate Short Unique IDs from Post IDs.
 
