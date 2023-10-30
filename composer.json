@@ -1,0 +1,5 @@
+{
+    "require": {
+        "sqids/sqids": "^0.4.1"
+    }
+}
