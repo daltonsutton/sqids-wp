@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:   Sqids (Hashids) for WordPress
+ * Plugin Name:   Sqids
  * Description:   Generate Short Unique IDs from Post IDs.
  * Version:       0.0.1
  * Requires PHP:  8.1
