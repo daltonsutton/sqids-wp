@@ -2,11 +2,11 @@
 /**
  * Plugin Name:   Sqids
  * Description:   Generate Short Unique IDs from Post IDs.
- * Version:       0.0.1
+ * Version:       0.0.2
  * Requires PHP:  8.1
  * Author:        Dalton Sutton
  * Author URI:    https://dalton.sutton.io/
- * Plugin URI:    https://dalton.sutton.io/plugins/
+ * Plugin URI:    https://github.com/daltonsutton/sqids-wp
  * Text Domain:   sqids-wp
   
  * 
@@ -19,7 +19,7 @@ use Sqids\Sqids;
 
 // Register the "sqid" tag in permalink structure
 function sqid_rewrite_tag() {
-    add_rewrite_tag('%sqid%', '([^/]+)');
+    add_rewrite_tag('%sqid%', '([^/]+)', 'sqid=');
 }
 add_action('init', 'sqid_rewrite_tag', 10, 0);
 
@@ -45,6 +45,24 @@ function sqid_permalink_structure_tags($tags) {
     return $tags;
 }
 add_filter('available_permalink_structure_tags', 'sqid_permalink_structure_tags');
+
+// query var
+function sqid_query_vars($query_vars) {
+    $query_vars[] = 'sqid';
+    return $query_vars;
+}
+add_filter('query_vars', 'sqid_query_vars');
+
+// decode sqid to post id
+function sqid_request($query_vars) {
+    if (array_key_exists('sqid', $query_vars)):
+        $sqids = new Sqids(minLength: 10);
+        $post_id = $sqids->decode($query_vars['sqid'])[0];
+        $query_vars['p'] = $post_id;
+    endif;
+    return $query_vars;
+}
+add_filter('request', 'sqid_request');
 
 // Flush rewrite rules on plugin activation
 function sqid_flush_rewrite_rules() {
