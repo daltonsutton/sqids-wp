@@ -2,7 +2,7 @@
 /**
  * Plugin Name:   Sqids
  * Description:   Generate Short Unique IDs from Post IDs.
- * Version:       0.0.2
+ * Version:       0.0.3
  * Requires PHP:  8.1
  * Author:        Dalton Sutton
  * Author URI:    https://dalton.sutton.io/
@@ -56,10 +56,17 @@ add_filter('query_vars', 'sqid_query_vars');
 // decode sqid to post id
 function sqid_request($query_vars) {
     if (array_key_exists('sqid', $query_vars)):
-        $sqids = new Sqids(minLength: 10);
-        $post_id = $sqids->decode($query_vars['sqid'])[0];
-        $query_vars['p'] = $post_id;
+        $sqid = $query_vars['sqid'];
+        $sqids = new Sqids(minLength: strlen($sqid));
+        $decoded_sqid = $sqids->decode($sqid)[0];
+
+        if ($decoded_sqid && strlen($sqid) === 10):
+            $query_vars['p'] = $decoded_sqid;
+        else:
+            $query_vars['error'] = '404';
+        endif;
     endif;
+
     return $query_vars;
 }
 add_filter('request', 'sqid_request');
@@ -76,4 +83,3 @@ function sqid_deactivation() {
     flush_rewrite_rules();
 }
 register_deactivation_hook( __FILE__, 'sqid_deactivation' );
-
