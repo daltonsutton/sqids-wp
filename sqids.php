@@ -1,14 +1,14 @@
 <?php
 /**
- * Plugin Name:   Sqids
+ * Plugin Name:   Unique IDs Generator using Sqids
  * Description:   Generate Short Unique IDs from Post IDs.
- * Version:       0.0.4
+ * Version:       0.0.5
  * Requires PHP:  8.1
  * Author:        Dalton Sutton
  * Author URI:    https://dalton.sutton.io/
- * Plugin URI:    https://github.com/daltonsutton/sqids-wp
- * Text Domain:   sqids-wp
-  
+ * Plugin URI:    https://github.com/daltonsutton/unique-ids-generator-with-sqids
+ * Text Domain:   unique-ids-generator-with-sqids
+
  * 
  * Author Note: This file is updated remotely. Please DO NOT make any changes to this file, as it will be overwritten.
  */
