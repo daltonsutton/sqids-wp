@@ -1,10 +1,11 @@
-=== sqids ===
+=== unique-ids-generator-with-sqids ===
 Contributors: daltonsutton
 Tags: sqids, hashids
 Requires at least: 6.0
-Tested up to: 6.2
+Tested up to: 6.4.2
+Stable tag: 1.0.0
 Requires PHP: 8.1
-License: MIT
+License: GPLv2 or later
 
 Generate Short Unique IDs from Post IDs.
 
@@ -15,7 +16,7 @@ This plugin generates short unique IDs from post IDs. It uses the [sqids-php](ht
 Activate the plugin. Under the Permalinks settings page, you will see a new tag called %sqid%. Use this tag in your permalink structure to generate a short unique ID for each post.
 
 == Upgrade Notice ==
-There is no specific upgrade notice available for the current version of the "sqids" plugin.
+There are no upgrade notices at this time.
 
 == Changelog ==
 
