@@ -7,6 +7,8 @@ Stable tag: 1.0.0
 Requires PHP: 8.1
 License: GPLv2 or later
 
+== Testing Upload to wp.org ==
+
 Generate Short Unique IDs from Post IDs.
 
 == Description ==
